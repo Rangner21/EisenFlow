@@ -1,0 +1,936 @@
+/* Estilos Globais e Fundo */
+body {
+    background-color: #121212; /* Preto/Cinza escuro para conforto visual */
+    color: #f0f0f0; /* Cor de texto padrão clara */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 20px; /* Adiciona padding no topo para não ficar atrás do header fixo */
+}
+
+h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 24px;
+    text-align: center; /* Centraliza o texto dentro do elemento */
+}
+
+/* Cabeçalho Fixo */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza o item principal (o h1) */
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 900;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Estilo para o menu hamburger no canto superior direito */
+.menu-toggle {
+    position: absolute; /* Posição absoluta para não afetar o alinhamento do título */
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;  /* Reduzido em ~15% */
+    height: 21px; /* Reduzido em ~15% */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.menu-toggle-bar {
+    width: 100%;
+    height: 3px;  /* Reduzido proporcionalmente */
+    background-color: #fff; /* Cor das barras */
+    border-radius: 2px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Animação do botão de menu para 'X' quando ativo */
+.menu-toggle.is-active .menu-toggle-bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.is-active .menu-toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.is-active .menu-toggle-bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Estilos para o menu dropdown */
+.main-menu {
+    position: fixed;
+    top: 70px; /* Posição abaixo do novo header fixo */
+    right: 30px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 950;
+    width: 200px;
+    transform: translateY(-20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s;
+}
+
+.main-menu.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.main-menu ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.main-menu ul li a {
+    display: flex;
+    justify-content: space-between; /* Alinha o texto à esquerda e o ícone à direita */
+    align-items: center;
+    padding: 12px 20px;
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.main-menu ul li a:hover {
+    background-color: #333;
+}
+
+.main-menu .menu-item-separator {
+    border-top: 1px solid #444;
+    margin-top: 8px;
+    padding-top: 8px;
+}
+
+.user-info-menu {
+    padding: 0;
+    border-bottom: 1px solid #444;
+    margin-bottom: 8px;
+}
+
+.user-info-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    color: #ccc; /* Cor padrão para o ícone */
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+#user-display-name {
+    font-weight: bold;
+    color: #f0f0f0;
+}
+
+#user-display-role {
+    font-size: 0.8em;
+    font-weight: 300; /* Mais fino */
+    color: #aaa;
+    text-transform: capitalize;
+}
+
+.user-info-menu a:hover {
+    background-color: #333;
+}
+
+.user-info-menu a i {
+    font-size: 1.2em;
+}
+
+/* Estilo para o logo no canto superior esquerdo */
+.site-logo {
+    position: absolute; /* Posição absoluta para não afetar o alinhamento do título */
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 30px; /* Altura do logo no cabeçalho reduzida */
+    width: auto;
+}
+
+/* Estilo para o segundo logo no canto inferior direito */
+.site-logo-bottom {
+    position: fixed;
+    bottom: 20px;
+    left: 50%; /* Posiciona o início do elemento no meio da tela */
+    transform: translateX(-50%); /* Puxa o elemento para a esquerda pela metade de sua própria largura */
+    width: 100px; /* Largura do logo inferior reduzida */
+    height: auto;
+    z-index: 800;
+    opacity: 0.5; /* Deixa a imagem 50% mais fraca (transparente) */
+}
+
+/* Estilos das Abas */
+.tabs {
+    display: flex;
+    margin-bottom: 15px; /* Reduz o espaço abaixo das abas */
+    justify-content: center; /* Centraliza as abas */
+    gap: 40px; /* Aumenta o espaço entre as abas */
+}
+
+.tab-content-container {
+    background-color: #1e1e1e; /* Um tom um pouco mais claro que o corpo */
+    border-radius: 8px; /* Cantos arredondados */
+    padding: 15px 25px; /* Padding interno consistente */
+    border: 1px solid #333; /* Borda sutil */
+    height: 65vh; /* Altura fixa para a área de conteúdo */
+}
+
+.tab-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+    color: #fff;
+}
+
+.tab-button.active {
+    font-weight: bold;
+}
+
+/* Cores específicas para o botão ativo de cada aba */
+.tab-button.active[data-tab="home"] { border-bottom-color: #007bff; color: #007bff; }
+.tab-button.active[data-tab="producao"] { border-bottom-color: #28a745; color: #28a745; }
+.tab-button.active[data-tab="expedicao"] { border-bottom-color: #fd7e14; color: #fd7e14; }
+.tab-button.active[data-tab="entregas"] { border-bottom-color: #f8f9fa; color: #f8f9fa; }
+
+
+/* Conteúdo das Abas */
+.tab-content {
+    animation: fadeIn 0.5s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.tab-header h2 {
+    margin: 0; /* Remove as margens padrão do h2 para um controle mais preciso do espaçamento */
+}
+
+.add-post-btn {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-post-btn:hover {
+    background-color: #0056b3;
+}
+
+.search-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-width 0.4s ease-out, opacity 0.2s ease-out, visibility 0s 0.4s;
+}
+
+.search-controls.is-open {
+    max-width: 600px; /* Aumentado para garantir que tudo caiba */
+    opacity: 1;
+    visibility: visible;
+    transition: max-width 0.4s ease-out, opacity 0.3s ease-out 0.1s;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: #aaa;
+    font-size: 18px;
+    padding: 8px;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input {
+    padding: 8px 5px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #555;
+    color: #fff;
+    border-radius: 0;
+    font-size: 14px;
+    width: 220px;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: none;
+}
+
+.date-input {
+    padding: 8px 5px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #555;
+    color: #fff;
+    border-radius: 0;
+    font-size: 14px;
+    width: 150px;
+    transition: border-color 0.3s;
+    color-scheme: dark; /* Melhora a aparência do seletor de data em tema escuro */
+}
+
+.date-input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.header-select {
+    /* Resetar aparência padrão */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    background-color: transparent;
+    border: none;
+    color: #aaa;
+    padding: 8px 20px 8px 0; /* Espaço para a seta */
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    /* Seta customizada */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23aaa' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 12px;
+}
+
+.header-select:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.header-select option {
+    background: #2a2a2a; /* Cinza escuro para as opções */
+    color: #f0f0f0;
+}
+
+/* Cores de Texto Específicas por Aba (para títulos h2) */
+.producao-colors h2 { color: #28a745; } /* Verde */
+.expedicao-colors h2 { color: #fd7e14; } /* Laranja */
+.entregas-colors h2 { color: #f8f9fa; } /* Branco */
+
+/* Layout de Grade para os Posts (igual para todas as abas) */
+.post-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Espaçamento mínimo entre os posts */
+    flex: 1; /* Faz a grade ocupar o espaço restante e permite encolher */
+    overflow-y: auto; /* Adiciona a barra de rolagem apenas à grade */
+}
+
+.post-item {
+    background-color: #2a2a2a; /* Cinza escuro padrão */
+    border: 1px solid transparent; /* Borda mais fina */
+    border-radius: 8px;
+    padding: 8px 15px; /* Padding vertical reduzido ainda mais */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    color: #f0f0f0; /* Texto claro por padrão */
+}
+
+.post-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-header-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px; /* Aumenta o espaço entre os itens do cabeçalho */
+}
+
+.entregas-colors .post-header, .expedicao-colors .post-header {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.post-header p {
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+.post-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, margin-top 0.5s, padding-top 0.5s, border-top-width 0.5s;
+}
+
+.post-item.expanded .post-body {
+    max-height: 2000px; /* Valor grande o suficiente para qualquer conteúdo */
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #444;
+}
+
+.post-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-post-btn {
+    background: none;
+    border: none;
+    color: inherit; /* Herda a cor do texto do post (branco ou preto) */
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    line-height: 1;
+    opacity: 0.6;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.delete-post-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    line-height: 1;
+    opacity: 0.6;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.edit-post-btn:hover {
+    opacity: 1;
+}
+
+.delete-post-btn:hover {
+    opacity: 1;
+    color: #e74c3c; /* Vermelho para perigo */
+}
+
+.post-item p {
+    margin: 0;
+    line-height: 1.5;
+    flex-grow: 1; /* Garante que o texto ocupe o espaço disponível */
+    word-wrap: break-word; /* Quebra palavras longas para não transbordar */
+}
+
+.post-item .observation-text {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* Estilos para o contêiner de múltiplas imagens dentro de um post */
+.post-image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; /* Espaçamento entre as imagens */
+    justify-content: flex-start;
+}
+
+.post-image-container img {
+    max-width: 80px; /* Tamanho da miniatura */
+    height: 80px;
+    object-fit: cover; /* Corta a imagem para preencher o espaço */
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer; /* Indica que a imagem é clicável */
+}
+
+.post-image-container img:hover {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+/* Cores de contorno e fundo no hover, específicas para as caixas de post */
+.producao-colors .post-item {
+    border-color: #28a745; /* Contorno verde */
+}
+.producao-colors .post-item:hover, .producao-colors .post-item.expanded {
+    background-color: #28a745; /* Fundo verde no hover ou expandido */
+    color: #fff;
+}
+
+.expedicao-colors .post-item {
+    border-color: #fd7e14; /* Contorno laranja */
+}
+.expedicao-colors .post-item:hover, .expedicao-colors .post-item.expanded {
+    background-color: #fd7e14; /* Fundo laranja no hover ou expandido */
+    color: #fff;
+}
+
+.entregas-colors .post-item {
+    border-color: #f8f9fa; /* Contorno branco */
+}
+.entregas-colors .post-item:hover, .entregas-colors .post-item.expanded {
+    background-color: #f8f9fa; /* Fundo branco no hover ou expandido */
+    color: #121212; /* Texto escuro para contraste */
+}
+
+/* Estilos do Modal (Formulário Pop-up) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000; /* Base para todos os modais */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: slideIn 0.3s;
+    max-height: 90vh; /* Define a altura máxima como 90% da altura da tela */
+    overflow-y: auto; /* Adiciona a barra de rolagem vertical quando necessário */
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+.modal-content input, .modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    border: 1px solid #555;
+    color: #fff;
+    border-radius: 5px;
+    box-sizing: border-box; /* Importante para o padding não aumentar o tamanho */
+}
+
+.modal-content input:disabled {
+    background-color: #444; /* Um tom diferente para indicar que não é editável */
+    color: #999;
+    cursor: not-allowed;
+}
+
+.modal-content textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Estilização da barra de rolagem para navegadores WebKit (Chrome, Safari, etc.) */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #2a2a2a; /* Fundo da trilha da barra de rolagem */
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: #555; /* Cor da barra de rolagem */
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background-color: #777; /* Cor da barra ao passar o mouse */
+}
+
+/* Estilo da barra de rolagem para a grade de posts */
+.post-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.post-grid::-webkit-scrollbar-track {
+    background: #1e1e1e; /* Fundo da trilha da barra de rolagem (cor do container) */
+}
+
+.post-grid::-webkit-scrollbar-thumb {
+    background-color: #555; /* Cor da barra de rolagem */
+    border-radius: 10px;
+}
+
+.form-field-group {
+    display: none; /* Escondido por padrão */
+}
+
+/* Estilos da Área de Arrastar e Soltar (Drag and Drop) */
+.drop-zone {
+    margin-top: 5px;
+    border: 2px dashed #555;
+    border-radius: 5px;
+    padding: 30px;
+    text-align: center;
+    color: #ccc;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.drop-zone:hover {
+    border-color: #007bff;
+}
+
+.drop-zone.drag-over {
+    background-color: rgba(0, 123, 255, 0.1);
+    border-color: #007bff;
+}
+
+.drop-zone-prompt {
+    pointer-events: none; /* Garante que os cliques cheguem ao input escondido */
+}
+
+/* Estilos para o contêiner de pré-visualização de imagens no modal de postagem */
+.image-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    max-height: 150px; /* Limita a altura para evitar que o modal fique muito grande */
+    overflow-y: auto; /* Adiciona barra de rolagem se houver muitas imagens */
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+}
+
+.modal-image-preview {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #666;
+}
+
+/* Estilos do Modal de Zoom da Imagem */
+.zoom-content {
+    background-color: transparent;
+    padding: 0;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: none;
+}
+
+/* Estilos do Modal de Escolha de Fonte de Imagem */
+#image-source-modal {
+    z-index: 1010; /* Garante que fique sobre o modal de post */
+}
+
+.image-source-content {
+    max-width: 320px; /* Largura reduzida para se ajustar ao conteúdo */
+    text-align: center;
+    padding: 25px; /* Padding ajustado para um visual mais compacto */
+}
+
+.source-options {
+    display: flex;
+    flex-direction: column; /* Alinha os botões verticalmente */
+    align-items: center; /* Centraliza os botões horizontalmente */
+    margin-top: 25px;
+    gap: 15px; /* Espaço entre os botões */
+}
+
+.source-option-btn {
+    background-color: transparent;
+    border: 1px solid #555;
+    color: #f0f0f0;
+    padding: 10px 20px;
+    border-radius: 50px; /* Formato de pílula */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: row; /* Ícone e texto na horizontal */
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    /* Largura e altura automáticas para se ajustar ao conteúdo */
+}
+
+.source-option-btn:hover {
+    background-color: #007bff; /* Cor de destaque ao passar o mouse */
+    border-color: #007bff;
+}
+
+.source-option-btn i {
+    font-size: 20px;
+    margin-right: 10px; /* Espaço entre o ícone e o texto */
+}
+
+#submit-post-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#submit-post-btn:hover {
+    background-color: #218838;
+}
+
+/* Botão de salvar no modal de perfil */
+#save-profile-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#save-profile-btn:hover {
+    background-color: #218838;
+}
+
+.profile-success-message {
+    color: #28a745;
+    margin-top: 15px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.secondary-action-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #555;
+    color: white;
+    border: 1px solid #666;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.secondary-action-btn:hover {
+    background-color: #666;
+}
+
+.password-change-section {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #444;
+}
+
+.password-change-section h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #ccc;
+    font-weight: 500;
+}
+
+.profile-error-message {
+    color: #e74c3c;
+    margin-top: 15px;
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Estilo para a imagem ampliada no modal de zoom */
+#zoomed-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Garante que a imagem caiba no modal sem cortar */
+    display: block; /* Remove espaço extra abaixo da imagem */
+}
+
+.zoom-close-btn {
+    color: #fff; /* Botão de fechar branco para contraste */
+    font-size: 40px; /* Botão de fechar maior */
+    position: fixed; /* Posição fixa para ficar sempre visível */
+    top: 15px;
+    right: 35px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Estilos da Página de Login */
+.login-page {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; foi removido para permitir a rolagem */
+    min-height: 100vh; /* Garante que a página ocupe a tela toda, mas possa crescer */
+    padding: 40px 15px; /* Adiciona espaçamento vertical e horizontal */
+    box-sizing: border-box;
+}
+
+.login-wrapper {
+    width: 90%;
+    max-width: 350px;
+}
+
+.login-container {
+    background-color: #1e1e1e;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.login-logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.login-container h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.login-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+.login-container input, .login-container select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #333;
+    border: 1px solid #555;
+    color: #fff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}
+
+.login-error {
+    color: #e74c3c;
+    margin-top: 15px;
+    height: 20px;
+}
+
+.toggle-link {
+    display: block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.toggle-link:hover {
+    text-decoration: underline;
+}

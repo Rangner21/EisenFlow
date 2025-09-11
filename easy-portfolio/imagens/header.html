@@ -1,0 +1,33 @@
+<header class="main-header">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="header-logo">
+        <a href="index.html" aria-label="Página Inicial"><img src="imagens/logo.png" alt="Logo Easy Portfolio"></a>
+    </div>
+</header>
+
+<nav id="main-menu" class="main-menu">
+    <ul>
+        <li class="user-info-menu">
+            <button type="button" id="edit-profile-btn" class="user-info-button">
+                <i class="fas fa-user-circle" aria-hidden="true"></i>
+                <div class="user-details">
+                    <span id="user-display-name">Carregando...</span>
+                    <small id="user-display-role"></small>
+                </div>
+            </button>
+        </li>
+        <li><a href="index.html">Home <i class="fas fa-home" aria-hidden="true"></i></a></li>
+        <li id="dashboard-link" class="hidden"><a href="dashboard.html">Painel de Controle <i class="fas fa-tachometer-alt" aria-hidden="true"></i></a></li>
+        <li id="activity-log-link" class="hidden"><a href="log-atividades.html">Log de Atividades <i class="fas fa-clipboard-list" aria-hidden="true"></i></a></li>
+        <li id="manage-users-link" class="hidden"><a href="gerenciar-usuarios.html">Gerenciar Usuários <i class="fas fa-users-cog" aria-hidden="true"></i></a></li>
+        <li class="menu-item-separator"><a href="#">Suporte <i class="fas fa-headset" aria-hidden="true"></i></a></li>
+        <li><a href="#">Configuração <i class="fas fa-cog" aria-hidden="true"></i></a></li>
+        <li class="menu-item-separator">
+            <button type="button" id="logout-btn">Sair <i class="fas fa-sign-out-alt" aria-hidden="true"></i></button>
+        </li>
+    </ul>
+</nav>
+
+<div id="page-overlay" class="page-overlay"></div>

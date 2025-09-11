@@ -1,0 +1,313 @@
+/* Tema Escuro para a Página de Gerenciamento de Usuários */
+:root {
+    --cor-fundo-escuro: #121212;
+    --cor-superficie-escura: #1e1e1e;
+    --cor-borda-escura: #333;
+    --cor-texto-principal: #e0e0e0;
+    --cor-texto-secundario: #a0a0a0;
+    --cor-primaria: #d3fc00; /* Cor de destaque principal */
+    --cor-erro: #cf6679;
+    --sombra-padrao: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Reset Básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--cor-fundo-escuro);
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--cor-superficie-escura);
+    border-radius: 8px;
+    box-shadow: var(--sombra-padrao);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--cor-borda-escura);
+    padding-bottom: 1rem;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+h1, h3 {
+    color: var(--cor-texto-principal);
+}
+
+.back-link {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.add-btn {
+    background-color: var(--cor-primaria);
+    color: #121212; /* Cor escura para contraste */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.add-btn:hover {
+    background-color: #b8de00; /* Tom mais escuro da cor primária */
+}
+
+/* Campo de Busca Minimalista */
+.search-container {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.search-container .fa-search {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cor-texto-secundario);
+    transition: color 0.3s ease;
+}
+
+#user-search-input {
+    width: 100%;
+    padding: 12px 0 12px 30px; /* Espaço para o ícone */
+    border: none;
+    border-bottom: 1px solid var(--cor-borda-escura);
+    background-color: transparent;
+    color: var(--cor-texto-principal);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#user-search-input:focus {
+    border-bottom-color: var(--cor-primaria);
+}
+
+.search-container:focus-within .fa-search {
+    color: var(--cor-primaria);
+}
+
+/* Tabela de Usuários */
+.user-table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--cor-borda-escura);
+}
+
+thead tr {
+    background-color: #252525;
+}
+
+th {
+    font-weight: 600;
+}
+
+tbody tr:hover {
+    background-color: #2a2a2a;
+}
+
+/* Ações do Usuário */
+.user-actions {
+    text-align: right;
+}
+
+.user-actions button {
+    background: none;
+    border: none;
+    color: var(--cor-texto-secundario);
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 10px;
+    transition: color 0.2s;
+}
+
+.user-actions button:hover {
+    color: var(--cor-primaria);
+}
+
+.user-actions button.reset-password-btn:hover {
+    color: #f0ad4e; /* Cor laranja/amarelo para a ação de resetar */
+}
+
+.user-actions button.delete-user-btn:hover {
+    color: var(--cor-erro);
+}
+
+.user-actions button:disabled {
+    color: #555;
+    cursor: not-allowed;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--cor-superficie-escura);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--sombra-padrao);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    border: 1px solid var(--cor-borda-escura);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--cor-texto-secundario);
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: var(--cor-texto-principal);
+}
+
+/* Formulário do Modal */
+.modal-content form {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.modal-content form label {
+    display: block;
+    margin-bottom: -0.3rem;
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+}
+
+.modal-content form input,
+.modal-content form select,
+.modal-content form button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid var(--cor-borda-escura);
+    font-size: 1rem;
+    background-color: #252525;
+    color: var(--cor-texto-principal);
+}
+
+.modal-content form button[type="submit"] {
+    margin-top: 1rem;
+    background-color: var(--cor-primaria);
+    color: #121212; /* Cor escura para contraste */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.modal-content form button[type="submit"]:hover {
+    background-color: #b8de00; /* Tom mais escuro da cor primária */
+}
+
+.form-message {
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 1rem;
+    display: none; /* Escondido por padrão */
+}
+.form-message.error {
+    background-color: var(--cor-erro);
+    color: white;
+}
+.form-message.success {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Paginação */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    gap: 1rem;
+}
+
+.pagination-controls button {
+    background-color: var(--cor-superficie-escura);
+    color: var(--cor-primaria);
+    border: 1px solid var(--cor-borda-escura);
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: var(--cor-primaria);
+    color: #121212;
+}
+
+.pagination-controls button:disabled {
+    color: #555;
+    cursor: not-allowed;
+    border-color: #444;
+}
+
+.pagination-controls span {
+    font-weight: bold;
+    color: var(--cor-texto-secundario);
+}
+
+/* Rodapé */
+.site-footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--cor-borda-escura);
+}
+
+.site-footer img {
+    max-width: 800px;
+    width: 100%; /* Garante que a imagem não ultrapasse o container em telas menores */
+    opacity: 0.7;
+}

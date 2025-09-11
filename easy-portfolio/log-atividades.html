@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log de Atividades</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style-log.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Log de Atividades do Administrador</h1>
+            <a href="index.html" class="back-link">← Voltar para o Início</a>
+        </header>
+        <main>
+            <div id="log-list-container" class="log-list-container">
+                <!-- Entradas de log serão inseridas aqui pelo JS -->
+            </div>
+            <div id="pagination-controls" class="pagination-controls">
+                <button id="prev-page-btn" disabled>&laquo; Anterior</button>
+                <span id="page-info">Página 1 de 1</span>
+                <button id="next-page-btn" disabled>Próxima &raquo;</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="log-atividades.js"></script>
+</body>
+</html>
